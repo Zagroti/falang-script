@@ -5,7 +5,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class WordTableMigration extends Migration
+class UserLoginTokenTableMigration extends Migration
 {
     /**
      * Run the migrations.
@@ -14,12 +14,12 @@ class WordTableMigration extends Migration
      */
     public function up()
     {
-        Schema::create(Constants::WORDS_DB, function (Blueprint $table) {
+        Schema::create(Constants::USERS_LOGIN_TOKEN_DB, function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('title');
-            $table->text('description');
-            $table->timestamps();
-            $table->softDeletes();
+            $table->string('login');
+            $table->string('token');
+            $table->integer('expire_at')->default(0);
+            $table->integer('created_at');
         });
     }
 
@@ -30,6 +30,6 @@ class WordTableMigration extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists(Constants::WORDS_DB);
+        Schema::dropIfExists(Constants::USERS_LOGIN_TOKEN_DB);
     }
 }
