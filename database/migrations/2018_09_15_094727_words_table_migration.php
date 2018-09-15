@@ -5,7 +5,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class WordTableMigration extends Migration
+class WordsTableMigration extends Migration
 {
     /**
      * Run the migrations.
@@ -16,8 +16,11 @@ class WordTableMigration extends Migration
     {
         Schema::create(Constants::WORDS_DB, function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('title');
-            $table->text('description');
+            $table->text('pronunciation');
+            $table->text('examples');
+            $table->text('word');
+            $table->text('definition');
+            $table->text('persian');
             $table->timestamps();
             $table->softDeletes();
         });

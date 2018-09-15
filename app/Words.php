@@ -15,7 +15,7 @@ class Words extends Model
      * @var array
      */
     protected $fillable = [
-        "title", "description"
+        "pronunciation", "examples", "word", "definition", "persian"
     ];
 
     protected $dates = ['deleted_at'];
