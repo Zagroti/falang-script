@@ -182,7 +182,7 @@ class ZamanakController extends ApiController
             )
             ->first();
         if (!$user) {
-            $hashIds = new Hashids(Constants::HASH_IDS_KEY);
+            $hashIds = new Hashids(config("config.hashIds"));
             $refLink = $hashIds->encode($phone, intval(microtime(true)));
             $user = User::create(['phone' => $phone, 'email' => '', 'auto_charge' => 0, 'active' => 1, 'remember_token' => '', 'first_name' => '', 'birthday' => 0, 'bio' => '', 'username' => '', 'gender' => 0, 'last_name' => '', "ref_link" => $refLink]);
         }
